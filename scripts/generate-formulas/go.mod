@@ -1,6 +1,6 @@
 module generate-formulas
 
-go 1.19
+go 1.25.0
 
 require (
 	github.com/google/go-github/v55 v55.0.0
@@ -12,5 +12,5 @@ require (
 	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	golang.org/x/crypto v0.12.0 // indirect
-	golang.org/x/sys v0.11.0 // indirect
+	golang.org/x/sys v0.44.0 // indirect
 )
