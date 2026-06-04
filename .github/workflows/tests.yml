@@ -30,6 +30,13 @@ jobs:
 
       - run: brew test-bot --only-cleanup-before
 
+      # Explicitly trust only this tap's own formulae so `brew doctor`
+      # (run by `--only-setup`) passes once Homebrew enforces tap trust.
+      # Least-privilege: scoped to the two formulae in this repo, on the
+      # ephemeral CI runner only. We deliberately avoid
+      # HOMEBREW_NO_REQUIRE_TAP_TRUST, which disables the trust control.
+      - run: brew trust --formula grafana/pyroscope/pyroscope grafana/pyroscope/profilecli
+
       - run: brew test-bot --only-setup
 
       - run: brew test-bot --only-tap-syntax
