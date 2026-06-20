@@ -15,8 +15,8 @@ class Pyroscope < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.0.3/pyroscope_2.0.3_darwin_amd64.tar.gz"
-      sha256 "f1fc2b2152f03407ec09eb1bd4ea2ed1f8036d6662a94f8235fff321763fb5bc"
+      url "https://github.com/grafana/pyroscope/archive/refs/tags/v2.1.0.tar.gz"
+      sha256 "9d38f808b9f5b2fa91a7258af8de47410dde5892c1b6bcc8fb2c5de76571c1a2"
 
       define_method :install do
         bin.install "pyroscope"

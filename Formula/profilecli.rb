@@ -7,8 +7,8 @@ class Profilecli < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.0.3/profilecli_2.0.3_darwin_amd64.tar.gz"
-      sha256 "cc21d4189b6220d3d44b5e8d4e96523ed431929e8accf49a914b77a1026f8027"
+      url "https://github.com/grafana/pyroscope/archive/refs/tags/v2.1.0.tar.gz"
+      sha256 "9d38f808b9f5b2fa91a7258af8de47410dde5892c1b6bcc8fb2c5de76571c1a2"
 
       define_method :install do
         bin.install "profilecli"
