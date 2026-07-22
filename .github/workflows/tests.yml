@@ -18,7 +18,7 @@ jobs:
 
       - name: Cache Homebrew Bundler RubyGems
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
           key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
@@ -29,13 +29,6 @@ jobs:
         run: brew install-bundler-gems
 
       - run: brew test-bot --only-cleanup-before
-
-      # Explicitly trust only this tap's own formulae so `brew doctor`
-      # (run by `--only-setup`) passes once Homebrew enforces tap trust.
-      # Least-privilege: scoped to the two formulae in this repo, on the
-      # ephemeral CI runner only. We deliberately avoid
-      # HOMEBREW_NO_REQUIRE_TAP_TRUST, which disables the trust control.
-      - run: brew trust --formula grafana/pyroscope/pyroscope grafana/pyroscope/profilecli
 
       - run: brew test-bot --only-setup
 
