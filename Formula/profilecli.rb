@@ -2,7 +2,6 @@
 class Profilecli < Formula
   desc "Open source continuous profiling software"
   homepage "https://grafana.com/oss/pyroscope/"
-  version "2.2.1"
   license "AGPL-3.0-only"
 
   on_macos do

@@ -2,7 +2,6 @@
 class Pyroscope < Formula
   desc "Open source continuous profiling software"
   homepage "https://grafana.com/oss/pyroscope/"
-  version "{{.Version}}"
   license "AGPL-3.0-only"
 
   def pyroscope_conf
