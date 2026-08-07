@@ -12,7 +12,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/google/go-github/v55/github"
+	"github.com/google/go-github/v90/github"
 	"github.com/jzelinskie/must"
 )
 
