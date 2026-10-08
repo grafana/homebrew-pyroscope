@@ -4,14 +4,6 @@ class Pyroscope < Formula
   homepage "https://grafana.com/oss/pyroscope/"
   license "AGPL-3.0-only"
 
-  def pyroscope_conf
-    <<~EOS
-      ---
-      pyroscopedb:
-        data_path: #{var}/lib/pyroscope
-    EOS
-  end
-
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/grafana/pyroscope/releases/download/v2.3.2/pyroscope_2.3.2_darwin_amd64.tar.gz"
@@ -50,11 +42,15 @@ class Pyroscope < Formula
     end
   end
 
-  def post_install
-    (var/"log/pyroscope").mkpath
-    (var/"lib/pyroscope").mkpath
-    (etc/"pyroscope").mkpath
-    (etc/"pyroscope/config.yaml").write pyroscope_conf unless File.exist?(etc/"pyroscope/config.yaml")
+  post_install_steps do
+    mkdir_p "log/pyroscope", base: :var
+    mkdir_p "lib/pyroscope", base: :var
+    mkdir_p "pyroscope", base: :etc
+    write_file "pyroscope/config.yaml", <<~EOS, base: :etc, overwrite: false
+      ---
+      pyroscopedb:
+        data_path: {{var}}/lib/pyroscope
+    EOS
   end
 
   service do
