@@ -4,26 +4,18 @@ class Pyroscope < Formula
   homepage "https://grafana.com/oss/pyroscope/"
   license "AGPL-3.0-only"
 
-  def pyroscope_conf
-    <<~EOS
-      ---
-      pyroscopedb:
-        data_path: #{var}/lib/pyroscope
-    EOS
-  end
-
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.2.1/pyroscope_2.2.1_darwin_amd64.tar.gz"
-      sha256 "868f93064770fc7a4c8362673a2f3394e37fb02754f11e7921c4e8a7e41d92d7"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.3.2/pyroscope_2.3.2_darwin_amd64.tar.gz"
+      sha256 "a3877d18c0ce7554985f6baef9b6762ae161b8d30d08ce7fe6aeeb890dfd4914"
 
       define_method :install do
         bin.install "pyroscope"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.2.1/pyroscope_2.2.1_darwin_arm64.tar.gz"
-      sha256 "5f4fee405e0fe830794858c16e64692df97f666d6e611e1804ec1073a502a353"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.3.2/pyroscope_2.3.2_darwin_arm64.tar.gz"
+      sha256 "2560e2fdd172dfeec0ceed7714959cb17cda452c481ed150269cb81b82977d38"
 
       define_method :install do
         bin.install "pyroscope"
@@ -33,16 +25,16 @@ class Pyroscope < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.2.1/pyroscope_2.2.1_linux_amd64.tar.gz"
-      sha256 "ece43c4aac4c3395f4a471c299ecc4dd25c5f947f802f812c1adbdae09ee6dd3"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.3.2/pyroscope_2.3.2_linux_amd64.tar.gz"
+      sha256 "8ae160b070818f83445accb9e38e7b92e11d5ebe43a22262d9e2aa0357e68d98"
 
       define_method :install do
         bin.install "pyroscope"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.2.1/pyroscope_2.2.1_linux_arm64.tar.gz"
-      sha256 "8b945621df63a9529b2374dd65fb729ff32dc0478c45ea665dfa1f88609fc89a"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.3.2/pyroscope_2.3.2_linux_arm64.tar.gz"
+      sha256 "5a09b05bdb48ee1ebc0ab18caa9578e087e8d3ade30cfcad1cfb05f7ccc82d51"
 
       define_method :install do
         bin.install "pyroscope"
@@ -50,11 +42,15 @@ class Pyroscope < Formula
     end
   end
 
-  def post_install
-    (var/"log/pyroscope").mkpath
-    (var/"lib/pyroscope").mkpath
-    (etc/"pyroscope").mkpath
-    (etc/"pyroscope/config.yaml").write pyroscope_conf unless File.exist?(etc/"pyroscope/config.yaml")
+  post_install_steps do
+    mkdir_p "log/pyroscope", base: :var
+    mkdir_p "lib/pyroscope", base: :var
+    mkdir_p "pyroscope", base: :etc
+    write_file "pyroscope/config.yaml", <<~EOS, base: :etc, overwrite: false
+      ---
+      pyroscopedb:
+        data_path: {{var}}/lib/pyroscope
+    EOS
   end
 
   service do
