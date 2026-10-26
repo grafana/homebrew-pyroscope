@@ -6,16 +6,16 @@ class Profilecli < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.1/profilecli_2.4.1_darwin_amd64.tar.gz"
-      sha256 "7a0094c55ec9b523ef857d2ddab0d0a2b4731fe55aa4c89532a840cb21a9436c"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/profilecli_2.4.2_darwin_amd64.tar.gz"
+      sha256 "f94deeca4958e7f4c301fb004b1ea790242018f40e987a9850a8c01f99f28c1c"
 
       define_method :install do
         bin.install "profilecli"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.1/profilecli_2.4.1_darwin_arm64.tar.gz"
-      sha256 "e2835585b3601ab9db30483ad242e6ff403a8fb55e09f2f82c54d2525d901a44"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/profilecli_2.4.2_darwin_arm64.tar.gz"
+      sha256 "505488752df407f4d53251179edada6655c72de7138bbe75933551a4fa5d0fbd"
 
       define_method :install do
         bin.install "profilecli"
@@ -25,16 +25,16 @@ class Profilecli < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.1/profilecli_2.4.1_linux_amd64.tar.gz"
-      sha256 "92515fc5a85ad550fdc9847bd58c7953e5ccc3692a519355dda45180c5bae793"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/profilecli_2.4.2_linux_amd64.tar.gz"
+      sha256 "f6bd6e2f1f4c8ba2ae010602797eb9a9c2f68edd7d9eb2062945bb6e4e2b46b4"
 
       define_method :install do
         bin.install "profilecli"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.1/profilecli_2.4.1_linux_arm64.tar.gz"
-      sha256 "fb96ec720c8ac3d741628b19a14e4dd939eb53d328cc476f4ffd55ffbbdea659"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/profilecli_2.4.2_linux_arm64.tar.gz"
+      sha256 "2947bcd65615b01da5ae4065ead264a6928dc6b0073ad1d1600122298b25e3a0"
 
       define_method :install do
         bin.install "profilecli"
