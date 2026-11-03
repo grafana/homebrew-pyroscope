@@ -6,16 +6,16 @@ class Pyroscope < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/pyroscope_2.4.2_darwin_amd64.tar.gz"
-      sha256 "e64c2050addc13f3964b5f0981c57fd244bd2e5612c9f76422f8862c99b451b2"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.3/pyroscope_2.4.3_darwin_amd64.tar.gz"
+      sha256 "383f2498b65da7b03e6ffbd265d01756dd9bc9c9f90b7a44f6d6332e90cb3419"
 
       define_method :install do
         bin.install "pyroscope"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/pyroscope_2.4.2_darwin_arm64.tar.gz"
-      sha256 "8ae482327999180fea2e17c93300423eb3a509da90a0d42888ca506b39804ed8"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.3/pyroscope_2.4.3_darwin_arm64.tar.gz"
+      sha256 "a714e9cc314849226dfe6cfbbf4c028cfe5c9c3bf5711d0ca3bfef3cfaafab23"
 
       define_method :install do
         bin.install "pyroscope"
@@ -25,16 +25,16 @@ class Pyroscope < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/pyroscope_2.4.2_linux_amd64.tar.gz"
-      sha256 "454c2fb2de731f300c1c5da2d1cd1a9791eb4d1a040be056217e4d593d430c16"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.3/pyroscope_2.4.3_linux_amd64.tar.gz"
+      sha256 "460da6ce30f7511579290a82b88221fc378eead9f764351dd9f8c60bf3f7c4ec"
 
       define_method :install do
         bin.install "pyroscope"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/grafana/pyroscope/releases/download/v2.4.2/pyroscope_2.4.2_linux_arm64.tar.gz"
-      sha256 "94db8b00da25025d96c0086d2bc1637cdd8cd8f4fb3e0ca50832a47965be75ed"
+      url "https://github.com/grafana/pyroscope/releases/download/v2.4.3/pyroscope_2.4.3_linux_arm64.tar.gz"
+      sha256 "4948565e8493271cbf9ab30b7529c26ffe49b49d3e7c57d17327538743d5ab92"
 
       define_method :install do
         bin.install "pyroscope"
